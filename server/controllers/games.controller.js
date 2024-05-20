@@ -69,7 +69,6 @@ class GamesController {
 
       return res.json(game);
     } catch (e) {
-      console.log('eeeeeee', e)
       next(ApiError.badRequest(e.message));
     }
   }
@@ -86,25 +85,3 @@ class GamesController {
 }
 
 export let gamesController = new GamesController();
-
-/**
- * Что бы достать инфу по 1 конкретной неделе
- *
- * SELECT * FROM gw
- * WHERE week_num = 9
- *
- * Что бы достать инфу по всем неделям
- *
- * SELECT SUM(kill), SUM(death)... SUM(hs) FROM gw
- * GROUP BY user_id
- * ORDER BY damage DESC
- *
- * SELECT SUM(kill), SUM(death)... SUM(hs) FROM gw
- * GROUP BY user_id
- * ORDER BY damage DESC
- * WHERE week_num < (last) 9
- *
- * AVERAGE(hs)
- * ...............................
- * Стрелочки
- */

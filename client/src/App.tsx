@@ -30,7 +30,7 @@ function App() {
             </header>
             <div className={classes.titleBlock}>
               <h1 className={classes.pageTitle}>
-                CS2 Ranking, <span className={classes.gameSerialNumber}>GN {serialNumber}</span>
+                CS2 Ranking, <span className={classes.gameSerialNumber}>GW-{serialNumber}</span>
                 <div className={classes.groupName}>ZhanikSTAN</div>
               </h1>
             </div>

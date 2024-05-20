@@ -66,7 +66,7 @@ export const MainPage = ({onSelectedNumberChange}: MainPageProps) => {
           >
             {
               serialNumberList.map((item, index) => (
-                <option value={item.serial_number} key={index}>Game serial number: {item.serial_number}</option>
+                <option value={item.serial_number} key={index}>GW-{item.serial_number}</option>
               ))
             }
           </Form.Select>
