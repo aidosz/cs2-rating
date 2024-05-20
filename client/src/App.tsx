@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router';
-import { NotFoundPage } from '@pages';
 import { TotalPage } from './pages/TotalPage/TotalPage.tsx';
 import classes from './App.module.scss';
 import logo from './assets/cs2-logo.png';
@@ -7,6 +6,7 @@ import { Image, Stack } from 'react-bootstrap';
 import topImage from './assets/fpllogo.png';
 import { MainPage } from './pages/MainPage/MainPage.tsx';
 import { useState } from 'react';
+import { NotFoundPage } from './pages';
 
 function App() {
   const [serialNumber, setSerialNumber] = useState('');
