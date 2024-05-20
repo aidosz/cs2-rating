@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { IGameSerialNumber, ISingleGameType } from '../../utils/types/game.types.ts';
+import { IGameSerialNumber, ISingleGameType } from '../../utils';
 import axios from 'axios';
 import { Button, Form, Table } from 'react-bootstrap';
 import classes from './MainPage.module.scss';
@@ -52,52 +52,54 @@ export const MainPage = ({onSelectedNumberChange}: MainPageProps) => {
 
   return (
     <>
-      <div className={classes.formGroup}>
-        <Link to="/total">
-          <Button variant="dark">Total Ranking</Button>
-        </Link>
-        <Form.Select
-          className={classes.formSelect}
-          onChange={e => onNumberChange(e.target.value)}
-          defaultValue={selectedSerialNumber}
-          name="serialNumber"
-          data-bs-theme="dark"
-        >
+      <div className="container">
+        <div className={classes.formGroup}>
+          <Link to="/total">
+            <Button variant="dark">Total Ranking</Button>
+          </Link>
+          <Form.Select
+            className={classes.formSelect}
+            onChange={e => onNumberChange(e.target.value)}
+            defaultValue={selectedSerialNumber}
+            name="serialNumber"
+            data-bs-theme="dark"
+          >
+            {
+              serialNumberList.map((item, index) => (
+                <option value={item.serial_number} key={index}>Game serial number: {item.serial_number}</option>
+              ))
+            }
+          </Form.Select>
+        </div>
+        <Table className="rankingTable" striped bordered hover variant="dark" responsive>
+          <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Kills</th>
+            <th>Deaths</th>
+            <th>Assists</th>
+            <th>HS</th>
+            <th>Damage</th>
+          </tr>
+          </thead>
+          <tbody>
           {
-            serialNumberList.map((item, index) => (
-              <option value={item.serial_number} key={index}>Game serial number: {item.serial_number}</option>
+            data.map((item, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{item.user.nickname}</td>
+                <td>{item.kills}</td>
+                <td>{item.deaths}</td>
+                <td>{item.assists}</td>
+                <td>{item.hs}</td>
+                <td>{item.damage}</td>
+              </tr>
             ))
           }
-        </Form.Select>
+          </tbody>
+        </Table>
       </div>
-      <Table className="rankingTable" striped bordered hover variant="dark" responsive>
-        <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Player</th>
-          <th>Kills</th>
-          <th>Deaths</th>
-          <th>Assists</th>
-          <th>HS</th>
-          <th>Damage</th>
-        </tr>
-        </thead>
-        <tbody>
-        {
-          data.map((item, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{item.user.nickname}</td>
-              <td>{item.kills}</td>
-              <td>{item.deaths}</td>
-              <td>{item.assists}</td>
-              <td>{item.hs}</td>
-              <td>{item.damage}</td>
-            </tr>
-          ))
-        }
-        </tbody>
-      </Table>
     </>
   );
 };
