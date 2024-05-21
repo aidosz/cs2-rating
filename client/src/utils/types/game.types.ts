@@ -24,7 +24,7 @@ export interface ITotalGameType {
   user: User
 }
 
-interface User {
+export interface User {
   nickname: string;
   username: string;
   createdAt: string;
