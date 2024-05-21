@@ -11,7 +11,6 @@ export const TotalPage = () => {
     axios.get('/games/total')
       .then(response => {
         setData(response.data);
-        console.log('response.data: ', response.data);
       })
       .catch(error => {
         console.log(error);
@@ -44,11 +43,11 @@ export const TotalPage = () => {
                 <td>{ index + 1 }</td>
                 <td>{item.game_played}</td>
                 <td>{item.user.nickname}</td>
-                <td>{item.total_kills}</td>
+                <td>{item.total_kills.toLocaleString()}</td>
                 <td>{item.total_deaths}</td>
                 <td>{item.total_assists}</td>
                 <td>{item.total_hs}</td>
-                <td>{item.total_damage}</td>
+                <td>{parseFloat(item.total_damage).toLocaleString()}</td>
               </tr>
             ))
           }

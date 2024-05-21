@@ -45,7 +45,6 @@ export const MainPage = ({onSelectedNumberChange}: MainPageProps) => {
   }, [serialNumberList]);
 
   function onNumberChange(serialNumber: string) {
-    console.log('serialNumber: ', serialNumber);
     onSelectedNumberChange && onSelectedNumberChange(serialNumber);
     setSelectedSerialNumber(serialNumber);
   }
@@ -93,7 +92,7 @@ export const MainPage = ({onSelectedNumberChange}: MainPageProps) => {
                 <td>{item.deaths}</td>
                 <td>{item.assists}</td>
                 <td>{item.hs}</td>
-                <td>{item.damage}</td>
+                <td>{item.damage.toLocaleString()}</td>
               </tr>
             ))
           }
