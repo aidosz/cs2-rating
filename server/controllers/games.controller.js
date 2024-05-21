@@ -41,6 +41,9 @@ class GamesController {
       const game = await Game.findAll({
         where: { serial_number: serialNumber },
         include: ['user'],
+        order: [
+          ['damage', 'DESC']
+        ]
       });
 
       return res.json(game);
