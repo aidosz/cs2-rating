@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Button, Form, Table } from 'react-bootstrap';
 import classes from './MainPage.module.scss';
 import { Link } from 'react-router-dom';
-import { Stats } from '../../core/components/Stats.tsx';
+import { Stats } from '../../core/components//StatsComponent/Stats.tsx';
 import { StatsMapEnum } from '../../utils/statsMap.tsx';
 
 interface MainPageProps {
@@ -101,11 +101,11 @@ export const MainPage = ({onSelectedNumberChange}: MainPageProps) => {
           </tbody>
         </Table>
         <Stats game={data} statProp={StatsMapEnum.KILLS} selectedSerialNumber={selectedSerialNumber}></Stats>
-        <br/>
+        <hr/>
         <Stats game={data} statProp={StatsMapEnum.DEATHS} selectedSerialNumber={selectedSerialNumber}></Stats>
-        <br/>
+        <hr/>
         <Stats game={data} statProp={StatsMapEnum.ASSISTS} selectedSerialNumber={selectedSerialNumber}></Stats>
-        <br/>
+        <hr/>
         <Stats game={data} statProp={StatsMapEnum.HS} selectedSerialNumber={selectedSerialNumber}></Stats>
       </div>
     </>
